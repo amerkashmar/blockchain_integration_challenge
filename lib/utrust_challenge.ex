@@ -11,7 +11,7 @@ defmodule UtrustChallenge do
   end
 
   def emet_execute_my_eth_transaction(to_address, value) do
-    parameters = [%{"from" => my_config(:public_key), "to" => to_address, "value" => decimal_to_hex(value)}]
+    parameters = [%{"from" => my_config(:eth_public_key), "to" => to_address, "value" => decimal_to_hex(value)}]
     encoded_message = create_message("eth_sendTransaction", parameters)
     get_http_result(encoded_message)
   end
