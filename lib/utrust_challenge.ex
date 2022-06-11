@@ -1,10 +1,13 @@
 defmodule UtrustChallenge do
   require Integer
+  require HTTPoison
 
-  def get_eth_balance(eth_address) do
-    {_response_code, hexBalance} = Ethereumex.HttpClient.eth_get_balance(eth_address)
+  HTTPoison.start
 
-    "Balance: " <> Float.to_string(wei_to_eth(hex_to_decimal(hexBalance))) <> " ETH"
+  def geb_get_eth_balance(eth_address) do
+    encoded_message = create_message("eth_getBalance", [eth_address, "latest"])
+    result = get_http_result(encoded_message)
+    wei_to_eth(hex_to_decimal(result))
   end
 
   def hex_to_decimal(hex_number) do
@@ -19,6 +22,27 @@ defmodule UtrustChallenge do
 
   def wei_to_eth(wei_number) do
     wei_number/1.0e18
+  end
+
+  def get_http_result(encoded_message) do
+    url = "http://localhost:7545"
+
+    {:ok,response} = HTTPoison.post(url, encoded_message)
+    {:ok,result} = Jason.decode(response.body)
+    result["result"]
+  end
+
+  def create_message(method_name,parameters) do
+    message = %{
+      method: method_name,
+      params: parameters,
+      jsonrpc: "2.0",
+      id: 1
+    }
+
+    {:ok, encoded_message} = Jason.encode(message)
+
+    encoded_message
   end
 
 end

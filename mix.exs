@@ -14,7 +14,7 @@ defmodule UtrustChallenge.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:ethereumex],
+      applications: [:ethereumex, :httpoison],
       extra_applications: [:logger]
     ]
   end
@@ -23,7 +23,8 @@ defmodule UtrustChallenge.MixProject do
   defp deps do
     [
       {:ethereumex, "~> 0.9"},
-      {:ex_abi, "~> 0.5"}
+      {:ex_abi, "~> 0.5"},
+      {:httpoison, "~> 1.8"}
     ]
   end
 end
