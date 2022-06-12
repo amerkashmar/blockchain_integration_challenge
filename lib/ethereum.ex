@@ -33,6 +33,6 @@ defmodule Ethereum do
       <> "Fee: \t" <> fee_in_eth <> " ETH\n"
       <> "Hash: \t" <> result["hash"] <> "\n")
 
-    "Completed successfully"
+    result
   end
 end

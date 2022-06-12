@@ -2,12 +2,27 @@ defmodule Common do
   require Integer
 
   def hex_to_decimal(hex_number) do
-    hex_sliced = hex_number |> String.slice(2..-1)
-
-    if Integer.is_odd(String.length(hex_sliced)) do
-      Base.decode16!("0" <> hex_sliced, case: :lower) |> :binary.decode_unsigned
+    if String.trim(hex_number) == "" do
+      0
     else
-      Base.decode16!(hex_sliced, case: :lower) |> :binary.decode_unsigned
+      if String.slice(hex_number, 0..1) == "0x" do
+        hex_sliced = hex_number |> String.slice(2..-1)
+
+        if Integer.is_odd(String.length(hex_sliced)) do
+          Base.decode16!("0" <> hex_sliced, case: :lower) |> :binary.decode_unsigned
+        else
+          Base.decode16!(hex_sliced, case: :lower) |> :binary.decode_unsigned
+        end
+
+      else
+      hex_sliced = hex_number
+
+      if Integer.is_odd(String.length(hex_sliced)) do
+          Base.decode16!("0" <> hex_sliced, case: :lower) |> :binary.decode_unsigned
+        else
+          Base.decode16!(hex_sliced, case: :lower) |> :binary.decode_unsigned
+        end
+      end
     end
   end
 
