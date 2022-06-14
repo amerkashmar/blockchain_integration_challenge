@@ -39,7 +39,7 @@ defmodule Common do
   end
 
   def my_config(config_name) do
-    Application.get_env(:utrust_challenge, config_name)
+    Application.get_env(:blockchain_integration_challenge, config_name)
   end
 
   def get_eth_eur_rate() do

@@ -1,16 +1,16 @@
-# UtrustChallenge
+# BlockchainIntegrationChallenge
 
 The goal of the challenge is creating an app that allows issuing transactions in different blockchains.
 
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `utrust_challenge` to your list of dependencies in `mix.exs`:
+by adding `blockchain_integration_challenge` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:utrust_challenge, "~> 0.1.0"}
+    {:blockchain_integration_challenge, "~> 0.1.0"}
   ]
 end
 ```
@@ -20,7 +20,7 @@ end
 In `config/config.exs`, find below the definition of each parameter.
 
 ```elixir
-config :utrust_challenge,
+config :blockchain_integration_challenge,
   eth_rpc_server: "http://localhost:7545",
   eth_public_key: "0x0...",
   test_configuration: "This is a test",
