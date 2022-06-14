@@ -15,7 +15,7 @@ defmodule BlockchainIntegrationChallenge.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:httpoison],
+      applications: [:httpoison, :elrondex],
       extra_applications: [:logger, :jason]
     ]
   end
@@ -24,7 +24,8 @@ defmodule BlockchainIntegrationChallenge.MixProject do
   defp deps do
     [
       {:ex_abi, "~> 0.5"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:elrondex, "~> 0.1.1"}
     ]
   end
 end

@@ -50,4 +50,13 @@ defmodule Common do
       1500.0
     end
   end
+
+  def get_egld_eur_rate() do
+    if Common.my_config(:is_eur_conversion_enabled) do
+      {:ok, response} = Jason.decode(HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=EGLD&tsyms=EUR&api_key=" <> Common.my_config(:eth_eur_api_key)).body)
+      response["EUR"]
+    else
+      43.0
+    end
+  end
 end
