@@ -2,7 +2,7 @@
 
 The goal of the challenge is creating an app that allows issuing transactions in different blockchains.
 
-Using Ethereum's JSON-RPC
+Elixir JSON-RPC client for the Ethereum blockchain.
 
 ## Installation
 
