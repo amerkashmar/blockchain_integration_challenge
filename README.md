@@ -1,6 +1,8 @@
 # UtrustChallenge
 
-**TODO: Add description**
+The goal of the challenge is creating an app that allows issuing transactions in different blockchains.
+
+Using Ethereum's JSON-RPC
 
 ## Installation
 
