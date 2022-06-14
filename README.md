@@ -1,4 +1,4 @@
-# BlockchainIntegrationChallenge
+# Blockchain Integration Challenge
 
 The goal of the challenge is creating an app that allows issuing transactions in different blockchains.
 
