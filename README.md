@@ -73,3 +73,30 @@ config :blockchain_integration_challenge,
       * value         i.e. "0xf3dbb76162000", // 4290000000000000
 
 ### Available Elrond functions
+
+* [`geb_get_egld_balance`]
+  * Parameters:
+    * egld_address: Any elrond address. i.e. "erd1234..."
+  * Returns:
+    * Float: Egld balance of address. i.e. 30.0
+
+* [`emet_execute_my_egld_transaction`] (Still not working properly)
+  * Parameters:
+    * to_address: Elrond address receiving the amount. i.e. "erd1234..."
+    * value: Egld amount to be sent
+  * Returns:
+    * String: Hash value of the executed transaction. i.e. "9fbfe..."
+
+* [`gtd_get_transaction_details`]
+  * Parameters:
+    * transaction_hash: Hash value of an existing transaction. i.e. "9fbfe29..."
+  * Returns:
+    * Map containing the transaction details, such as:
+      * blockHash     i.e. "9f1928754b1eb26b013ce3c..."
+      * blockNumber   i.e. "0x5daf3b", // 6139707
+      * sender        i.e. "erdddbe1f17865597fbd27ec712455208b6b76d",
+      * receiver      i.e. "erd02c1c8e6114b1dbe8937a392600a374432bb",
+      * gasLimit      i.e. 50000, 
+      * gasPrice      i.e. 1000000, 
+      * value         i.e. "3000000000000000000",
+      * signature     i.e. "a850ea816efca9fcfed29bbde0..."

@@ -14,12 +14,13 @@ defmodule Elrond do
     network = Network.devnet()
     value_in_wei = Common.eth_to_wei(value)
 
-    {:ok, transaction} = Common.my_config(:egld_address_1_mnemonic)
+    transaction = %{Common.my_config(:egld_address_1_mnemonic)
       |> Account.from_mnemonic()
-      |> Transaction.transaction(to_address, value_in_wei)
-      |> Transaction.prepare_network(network)
+      |> Transaction.transaction(to_address, value_in_wei) | nonce: 1, chainID: "D", gasLimit: 50000, gasPrice: 10}
 
-    signed_transaction = Transaction.sign(transaction)
+    transaction_with_network = Transaction.prepare(transaction, network)
+    signed_transaction = Transaction.sign(transaction_with_network)
+    IO.puts("Transction is signed: #{Transaction.sign_verify(signed_transaction)}")
     response = REST.post_transaction_send(signed_transaction)
 
     response
